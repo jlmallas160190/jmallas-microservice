@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'com.jmallas'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+ext {
+    hibernateVersion = '5.3.6.Final'
+    lombokVersion = '1.18.2'
+}
+
+dependencies {
+    compile group: 'javax', name: 'javaee-api', version:'7.0'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: hibernateVersion
+    compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: hibernateVersion
+}
+configurations {
+    compile.exclude module: 'dom4j'
+}

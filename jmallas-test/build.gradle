@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.jmallas'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":jmallas-parent")
+}
+task deployTest {
+    doLast {
+        exec {
+            commandLine 'gradle', 'build'
+        }
+        exec {
+            commandLine 'docker', 'stop', 'test'
+        }
+        exec {
+            commandLine 'docker', 'rm', 'test'
+        }
+
+        exec {
+            commandLine 'docker', 'build', '-t', 'jmallas/micro', '.'
+        }
+
+        exec {
+            commandLine 'docker', 'run', '-d', '-p', '8484:8080', '--name', 'test', 'jmallas/micro'
+        }
+    }
+}
+task startTest {
+    doLast {
+        exec {
+            commandLine 'gradle', 'build'
+        }
+
+        exec {
+            commandLine 'docker', 'build', '-t', 'jmallas/micro', '.'
+        }
+
+        exec {
+            commandLine 'docker', 'run', '-d', '-p', '8484:8080', '--name', 'test', 'jmallas/micro'
+        }
+    }
+}

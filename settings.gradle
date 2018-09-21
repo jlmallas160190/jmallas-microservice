@@ -1,0 +1,6 @@
+rootProject.name = 'jmallas-fact'
+include "jmallas-api"
+include "jmallas-common"
+include 'jmallas-parent'
+include 'jmallas-test'
+

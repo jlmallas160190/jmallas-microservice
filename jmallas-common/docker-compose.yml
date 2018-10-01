@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+
+  db:
+    image: postgres:9.6.1
+    environment:
+      POSTGRES_PASSWORD: 160190jorge
+      POSTGRES_DB: testMicro
+
+  micro-service-common:
+    image: common
+    ports:
+      - 8080

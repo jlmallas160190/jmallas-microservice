@@ -4,8 +4,9 @@ services:
   db:
     image: postgres:9.6.1
     environment:
+      POSTGRES_USER: jorge.malla
       POSTGRES_PASSWORD: 160190jorge
-      POSTGRES_DB: testmicro
+      POSTGRES_DB: testMicro
 
   micro-service-common:
     image: common

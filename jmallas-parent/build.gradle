@@ -22,6 +22,7 @@ dependencies {
     compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.hibernate', name: 'hibernate-validator', version: hibernateVersion
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
 }
 configurations {
     compile.exclude module: 'dom4j'
